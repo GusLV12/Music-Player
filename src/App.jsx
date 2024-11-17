@@ -1,12 +1,13 @@
 import { useState, useRef, useEffect } from 'react';
 import ReactHowler from 'react-howler';
+import { formatTime } from './utils/timeUtils';
 
 export const App = () => {
   const [audioSrc, setAudioSrc] = useState(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
-  const playerRef = useRef(null); // Referencia a ReactHowler
+  const playerRef = useRef(null); 
 
   // Cargar archivo y obtener duración
   const handleFileChange = (event) => {
@@ -66,7 +67,7 @@ export const App = () => {
 
       {/* Muestra el tiempo actual y la duración */}
       <div>
-        {Math.floor(currentTime)} / {Math.floor(duration)} segundos
+        {formatTime(currentTime)} / {formatTime(duration)} min.
       </div>
     </div>
   );
